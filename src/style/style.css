@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "kharazmi";
+  src: url("../../public/font/IRAN-Kharazmi.ttf");
+}
+@font-face {
+  font-family: "iranSemiBold";
+  src: url("../../public/font/IRAN_SemiBold.ttf");
+}
+@font-face {
+  font-family: "iran";
+  src: url("../../public/font/IRAN.ttf");
+}
+@font-face {
+  font-family: "iranBlack";
+  src: url("../../public/font/IRANBlack.ttf");
+}
+@font-face {
+  font-family: "iranbold";
+  src: url("../../public/font/IRANBold.ttf");
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  direction: rtl;
+  font-family: "iran";
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+.login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ad1414;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.login .box {
+  width: 300px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px;
+  align-items: center;
+  justify-content: space-around;
+}
+.login .box fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 0px;
+  margin: 10px 0px;
+}
+.login .box fieldset label {
+  font-size: 12pt;
+  color: #444444;
+  margin: 5px 0px;
+}
+.login .box fieldset input {
+  border-radius: 10px;
+  border: 1px #444444 solid;
+  height: 30px;
+  width: 220px;
+}
+.login .box fieldset input:focus {
+  outline: 1px #444444 solid;
+}
+.login .box button {
+  width: 220px;
+  background: #291c63;
+  color: #ffffff;
+  height: 30px;
+  border: 0px;
+  border-radius: 10px;
+  margin: 10px 0px;
+}
+.login .box .forget {
+  color: #291c63;
+  font-size: 8pt;
+  cursor: pointer;
+  text-align: right;
+  align-self: flex-start;
+  margin: 10px 25px;
+}/*# sourceMappingURL=style.css.map */

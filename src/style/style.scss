@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'kharazmi';
+    src: url('../../public/font/IRAN-Kharazmi.ttf');
+}
+@font-face {
+    font-family: 'iranSemiBold';
+    src: url('../../public/font/IRAN_SemiBold.ttf');
+}
+@font-face {
+    font-family: 'iran';
+    src: url('../../public/font/IRAN.ttf');
+}
+@font-face {
+    font-family: 'iranBlack';
+    src: url('../../public/font/IRANBlack.ttf');
+}
+@font-face {
+    font-family: 'iranbold';
+    src: url('../../public/font/IRANBold.ttf');
+}
+
+$colorRed1: #ad1414;
+$colorFFF: #ffffff;
+$colorTosi: #444444;
+$colorBlue: #291c63;
+
+*{
+    margin: 0px;
+    padding: 0px;
+    direction: rtl;
+    font-family: 'iran';
+}
+
+html,body,#root{
+    height: 100%;
+}
+
+@mixin inp(){
+    border-radius: 10px;
+    border: 1px $colorTosi solid;
+    height: 30px;
+    width: 220px;
+    &:focus{
+        outline: 1px $colorTosi solid;
+    }
+}
+
+@mixin Sbm(){
+    width: 220px;
+    background: $colorBlue;
+    color: $colorFFF;
+    height: 30px;
+    border: 0px;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+.login{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: $colorRed1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    
+    .box{
+        width: 300px;
+        background: $colorFFF;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 10px;
+        align-items: center;
+        justify-content: space-around;
+        fieldset{
+            display: flex;
+            flex-direction: column;
+            border: 0px;
+            margin: 10px 0px;
+            label{
+                font-size: 12pt;
+                color: $colorTosi;
+                margin: 5px 0px;
+            }
+            input{
+                @include inp()
+
+            }
+        }
+        button{
+            @include Sbm()
+        }
+        .forget{
+            color: $colorBlue;
+            font-size: 8pt;
+            cursor: pointer;
+            text-align: right;
+            align-self: flex-start;
+            margin: 10px 25px;
+        }
+    }
+}
