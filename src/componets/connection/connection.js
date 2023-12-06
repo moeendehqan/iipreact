@@ -11,6 +11,14 @@ const Connection = () =>{
     const id = getCookie('id')
 
 
+    const submit = () =>{
+        axios.post(OnRun+'/submitconnection',{id:id,device:newDevice})
+        .then(response=>{
+            console.log(response.data)
+        })
+    }
+
+
 
     return(
         <div className='panle'>
@@ -47,6 +55,7 @@ const Connection = () =>{
                             <label>رمزعبور</label>
                             <input type='password' value={newDevice.password} onChange={(e)=>{setNewDevice({...newDevice,password:e.target.value})}}></input>
                         </fieldset>
+                        <button onClick={submit}>ثبت</button>
                     </div>
                 </div>
                 :null

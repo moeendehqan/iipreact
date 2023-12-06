@@ -192,7 +192,7 @@ html,body,#root{
     }
     .win{
         width: 450px;
-        background: rgba($colorRed1,0.1);
+        background: rgba($colorRed1,0.03);
         z-index: 2;
         display: flex;
         flex-direction: column;
@@ -200,6 +200,7 @@ html,body,#root{
         justify-content: space-around;
         border-radius: 15px;
         border: 1px $colorTosi solid;
+        padding: 10px 0px;
         fieldset{
             width: 80%;
             border: 0px;
@@ -214,6 +215,9 @@ html,body,#root{
             label{
                 color: $colorTosi;
             }
+        }
+        button{
+            @include Sbm()
         }
     }
 }

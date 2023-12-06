@@ -173,7 +173,7 @@ html, body, #root {
 }
 .popup .win {
   width: 450px;
-  background: rgba(173, 20, 20, 0.1);
+  background: rgba(173, 20, 20, 0.03);
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -181,6 +181,7 @@ html, body, #root {
   justify-content: space-around;
   border-radius: 15px;
   border: 1px #444444 solid;
+  padding: 10px 0px;
 }
 .popup .win fieldset {
   width: 80%;
@@ -202,4 +203,13 @@ html, body, #root {
 }
 .popup .win fieldset label {
   color: #444444;
+}
+.popup .win button {
+  width: 220px;
+  background: #291c63;
+  color: #ffffff;
+  height: 30px;
+  border: 0px;
+  border-radius: 10px;
+  margin: 10px 0px;
 }/*# sourceMappingURL=style.css.map */
