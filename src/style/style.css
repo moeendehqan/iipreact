@@ -84,4 +84,122 @@ html, body, #root {
   text-align: right;
   align-self: flex-start;
   margin: 10px 25px;
+}
+
+.desk {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.desk nav {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  background: #ad1414;
+  border-bottom: 1px #ad1414 solid;
+}
+.desk nav button {
+  border: 0px;
+  flex: 1;
+  background: #ad1414;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.desk nav button:hover {
+  background: #ffffff;
+  color: #444444;
+}
+.desk .panle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desk .panle .NoDivce {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25px;
+}
+.desk .panle .NoDivce span {
+  color: #ad1414;
+  font-size: 28pt;
+}
+.desk .panle .NoDivce p {
+  color: #291c63;
+  font-size: 14pt;
+  text-align: center;
+}
+.desk .panle .add {
+  display: flex;
+  flex-direction: row;
+  width: 220px;
+  height: 30px;
+  margin-top: 50px;
+  background: #31b317;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.desk .panle .add p {
+  color: #ffffff;
+}
+.desk .panle .add span {
+  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  position: absolute;
+  inset: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.popup .clsclc {
+  position: absolute;
+  inset: 0px;
+}
+.popup .win {
+  width: 450px;
+  background: rgba(173, 20, 20, 0.1);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+  border: 1px #444444 solid;
+}
+.popup .win fieldset {
+  width: 80%;
+  border: 0px;
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.popup .win fieldset input {
+  border-radius: 10px;
+  border: 1px #444444 solid;
+  height: 30px;
+  width: 220px;
+  text-align: center;
+}
+.popup .win fieldset input:focus {
+  outline: 1px #444444 solid;
+}
+.popup .win fieldset label {
+  color: #444444;
 }/*# sourceMappingURL=style.css.map */

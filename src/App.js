@@ -2,15 +2,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Longin from "./page/Login";
 import Desk from "./page/desk";
-import './style/style.css'
+import Users from "./componets/users/users";
+import Connection from "./componets/connection/connection";
 
+import './style/style.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Longin/>}></Route>
-        <Route path="/desk" element={<Desk/>}></Route>
+        <Route path="/desk" element={<Desk/>}>
+          <Route path="users" element={<Users />}></Route>
+          <Route path="connection" element={<Connection />}></Route>
+
+        </Route>
       </Routes>
     </BrowserRouter>
   );
