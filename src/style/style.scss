@@ -221,3 +221,60 @@ html,body,#root{
         }
     }
 }
+
+
+.listDevice{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 95%;
+    align-items: center;
+    margin: 25px;
+    .Device{
+        width: 250px;
+        height: 45px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        background: rgba($colorBlue, 0.1);
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 1px rgba($colorBlue, 0.2) solid;
+        >span{
+            font-size: 30px;
+            color: $colorRed1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .detile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            p{
+                font-size: 12pt;
+                color: $colorTosi;
+                text-align: center;
+            }
+        }
+        .action{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            >span{
+                font-size: 15pt;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: $colorRed1;
+                cursor: pointer;
+            }
+        }
+
+        
+    }
+}

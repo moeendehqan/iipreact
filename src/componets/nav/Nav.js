@@ -11,7 +11,7 @@ const Nav = () =>{
             <button onClick={()=>navigate('users')}>کاربران</button>
             <button onClick={()=>navigate('connection')}>اتصال</button>
             <button>گزارش</button>
-            <button>پخش زنده</button>
+            <button onClick={()=>navigate('live')}>پخش زنده</button>
         </nav>
     )
 }

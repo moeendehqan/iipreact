@@ -212,4 +212,58 @@ html, body, #root {
   border: 0px;
   border-radius: 10px;
   margin: 10px 0px;
+}
+
+.listDevice {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 95%;
+  align-items: center;
+  margin: 25px;
+}
+.listDevice .Device {
+  width: 250px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(41, 28, 99, 0.1);
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px rgba(41, 28, 99, 0.2) solid;
+}
+.listDevice .Device > span {
+  font-size: 30px;
+  color: #ad1414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.listDevice .Device .detile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.listDevice .Device .detile p {
+  font-size: 12pt;
+  color: #444444;
+  text-align: center;
+}
+.listDevice .Device .action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.listDevice .Device .action > span {
+  font-size: 15pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ad1414;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
