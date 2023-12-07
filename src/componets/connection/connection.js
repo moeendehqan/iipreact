@@ -51,10 +51,11 @@ const Connection = () =>{
     }
  
     const del = (_id) =>{
-        axios.post(OnRun+'/delconnection',{id:id,_id:id})
+        axios.post(OnRun+'/delconnection',{id:id,_id:_id})
         .then(response=>{
             if (response.data.reply) {
                 toast.success('حذف شد',{position:"bottom-right"})
+                get()
             }else{
                 toast.warning(response.data.msg,{position:"bottom-right"})
             }

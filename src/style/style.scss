@@ -266,3 +266,61 @@ html,body,#root{
         
     }
 }
+
+
+.live{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100%;
+    .camlist{
+        width: 200px;
+        background: rgba($colorBlue, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .dvc{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            border: 1px rgba($colorTosi,0.12) solid;
+            margin-top: 15px;
+            padding:5px;
+            border-radius: 5px;
+            span{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18pt;
+                color: $colorBlue;
+            }
+            &:hover{
+                background: rgba($colorTosi,0.20);
+            }
+        }
+        .dvcslc{
+            background: $colorBlue;
+            span{
+                color: $colorFFF;
+            }
+            p{
+                color: $colorFFF;
+            }
+        }
+    }
+    .NoDivce{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+        span{
+            font-size: 18pt;
+            color: $colorRed1;
+
+        }
+    }
+
+}
