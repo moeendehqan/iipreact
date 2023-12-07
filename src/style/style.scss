@@ -225,13 +225,12 @@ html,body,#root{
 
 .listDevice{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 95%;
     align-items: center;
     margin: 25px;
     .Device{
-        width: 250px;
+        width: 100%;
         height: 45px;
         display: flex;
         flex-direction: row;
@@ -247,17 +246,6 @@ html,body,#root{
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .detile{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            p{
-                font-size: 12pt;
-                color: $colorTosi;
-                text-align: center;
-            }
         }
         .action{
             display: flex;

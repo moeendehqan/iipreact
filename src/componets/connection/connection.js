@@ -21,7 +21,7 @@ const Connection = () =>{
         }else if (newDevice.user.length<3) {toast.warning('مقدار نام کاربری صحیح وارد کنید',{position:"bottom-right"})
         }else if (newDevice.user.password<3) {toast.warning('مقدار نام رمزعبور صحیح وارد کنید',{position:"bottom-right"})
         }else{
-            axios.post(OnRun+'/addconnetion',{id:id, ip:newDevice.ip, port:newDevice.port, username:newDevice.user, password:newDevice.password})
+            axios.post(OnRun+'/addconnetion',{id:id, name:newDevice.name, ip:newDevice.ip, port:newDevice.port, username:newDevice.user, password:newDevice.password})
             .then(response=>{
                 if(response.data.reply){
                     toast.success('افزوده شد',{position:"bottom-right"})
@@ -29,6 +29,13 @@ const Connection = () =>{
                     get()
                 }else{
                     toast.warning(response.data.msg,{position:"bottom-right"})
+                }
+            })
+            .catch(error=>{
+                var keys = (Object.keys(error.response.data.message))
+                for (var i = 0;i < keys.length ;i++){
+                    console.log(keys[i])
+                    toast.warning(error.response.data.message[keys[i]],{position:"bottom-right"})
                 }
             })
         }
@@ -42,11 +49,15 @@ const Connection = () =>{
             }
         })
     }
-
+ 
     const del = (_id) =>{
         axios.post(OnRun+'/delconnection',{id:id,_id:id})
         .then(response=>{
-            console.log(response.data)
+            if (response.data.reply) {
+                toast.success('حذف شد',{position:"bottom-right"})
+            }else{
+                toast.warning(response.data.msg,{position:"bottom-right"})
+            }
         })
     }
 
@@ -70,9 +81,21 @@ const Connection = () =>{
                             return(
                                 <div className='Device' key={i._id}>
                                     <span><HiVideoCamera /></span>
-                                    <div className='detile'>
-                                        <p>{i.ip+":"+i.port}</p>
-                                        <p>date {i.datetime}</p>
+                                    <div>
+                                        <p>نام</p>
+                                        <p>{i.name}</p>
+                                    </div>
+                                    <div>
+                                        <p>ip</p>
+                                        <p>{i.ip}</p>
+                                    </div>
+                                    <div>
+                                        <p>port</p>
+                                        <p>{i.port}</p>
+                                    </div>
+                                    <div>
+                                        <p>تاریخ</p>
+                                        <p>{i.datetime}</p>
                                     </div>
                                     <div className='action'>
                                         <span onClick={()=>del(i._id)}><MdDeleteForever /></span>

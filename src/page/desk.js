@@ -13,13 +13,17 @@ const Desk = () =>{
 
     const checkCookie = () =>{
         if (id.length==0) {
+            setCookie('id','',0)
             navigate('/')
+        }else{
             axios.post(OnRun+'/cookie', {id:id})
             .then(response=>{
                 if(!response.data){
+                    setCookie('id','',0)
                     navigate('/')
                 }
             })
+
         }
     }
 
