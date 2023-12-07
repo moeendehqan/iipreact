@@ -22,7 +22,10 @@ const Live = () =>{
     }
 
     const connect_camera = () =>{
-        axios.post(OnRun+'/concamera',{id:id,_id:selected._id})
+        if (selected) {
+            axios.post(OnRun+'/concamera',{id:id,_id:selected._id})
+            
+        }
     }
 
 
