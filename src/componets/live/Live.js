@@ -1,16 +1,19 @@
 
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef} from "react"
 import { OnRun } from "../../config/OnRun"
 import { getCookie } from "../cookie/cookie"
 import { PiWarningDuotone } from "react-icons/pi";
+import { ToastContainer, toast } from "react-toastify";
 
 import { TiMediaPlayReverse } from "react-icons/ti";
+import { Container } from "@mui/material";
 
 const Live = () =>{
     const [device, setDevice] = useState([])
     const id = getCookie('id')
     const [selected, setSelected] = useState(null)
+    const [imageUrl, setImageUrl] = useState(null);
 
     const getDevice = () =>{
         axios.post(OnRun+'/getconnetion',{id:id})
@@ -21,19 +24,26 @@ const Live = () =>{
         })
     }
 
-    const connect_camera = () =>{
+    const connect_camera = () => {
         if (selected) {
-            axios.post(OnRun+'/concamera',{id:id,_id:selected._id})
-            
+            axios.post(OnRun + '/concamera', { id: id, _id: selected._id })
+            .then(response => {
+                setImageUrl(response.data);
+
+            })
+            .catch(error => {
+              console.error('Error fetching camera stream:', error);
+            });
         }
-    }
+      };
 
 
     useEffect(getDevice,[])
-    useEffect(connect_camera,[selected])
+    useEffect(connect_camera,[selected,imageUrl])
 
     return(
         <div className="live">
+            <ToastContainer autoClose={3000} />
             <div className="camlist">
                 {
                     device.length==0?
@@ -44,13 +54,28 @@ const Live = () =>{
                     :
                     device.map(i=>{
                         return(
-                            <div className={selected==i?"dvc dvcslc":"dvc"} onClick={()=>setSelected(i)}>
+                            <div key={i._id} className={selected==i?"dvc dvcslc":"dvc"} onClick={()=>setSelected(i)}>
                                 <p>{i.name}</p>
                                 <span><TiMediaPlayReverse /></span>
                             </div>
                         )
                     })
                 }
+
+            </div>
+            <div className="liveBox">
+                <div className="monitor">
+                    {imageUrl && (
+                        <img src={`data:image/jpeg;base64,${imageUrl.image}`} alt="تصویر" />
+                    )}
+                    <div className="respo">
+
+                    </div>
+                </div>
+                <div className="detile">
+
+
+                </div>
 
             </div>
 

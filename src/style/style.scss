@@ -19,6 +19,9 @@
     src: url('../../public/font/IRANBold.ttf');
 }
 
+
+
+
 $colorRed1: #ad1414;
 $colorFFF: #ffffff;
 $colorTosi: #444444;
@@ -323,4 +326,28 @@ html,body,#root{
         }
     }
 
+}
+
+.liveBox{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .monitor{
+        display: flex;
+        flex-direction: row-reverse;
+        height: 450px;
+        flex: 2;
+        margin: 10px;
+        .respo{
+            flex: 1;
+        }
+        img{
+            flex: 1;
+            border-radius: 10px;
+        }
+
+    }
+    .detile{
+        flex: 1;
+    }
 }

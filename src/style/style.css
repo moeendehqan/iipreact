@@ -309,4 +309,27 @@ html, body, #root {
 .live .NoDivce span {
   font-size: 18pt;
   color: #ad1414;
+}
+
+.liveBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.liveBox .monitor {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 450px;
+  flex: 2;
+  margin: 10px;
+}
+.liveBox .monitor .respo {
+  flex: 1;
+}
+.liveBox .monitor img {
+  flex: 1;
+  border-radius: 10px;
+}
+.liveBox .detile {
+  flex: 1;
 }/*# sourceMappingURL=style.css.map */
