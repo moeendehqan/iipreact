@@ -5,6 +5,20 @@ import {getCookie, setCookie} from '../componets/cookie/cookie'
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
  
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+
+
 const Longin = () =>{
     const [input, setInput] = useState({username:'', password:''})
     const navigate = useNavigate()
@@ -37,29 +51,70 @@ const Longin = () =>{
     useEffect(checkCookie,[])
 
 
-    
     return(
-        <div className="login">
-            
-            <ToastContainer autoClose={3000}/>
+        <Container component="main" maxWidth="xs">
+        <ToastContainer autoClose={3000} />
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            ورود
+          </Typography>
+          <Box component="form" onSubmit={submit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="نام کاربری"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              value={input.username}
+              onChange={(e)=>setInput({...input,username:e.target.value})}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="رمز عبوری"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={input.password}
+              onChange={(e)=>setInput({...input,password:e.target.value})}
+              
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              ورود
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  فراموشی رمز عبور
+                </Link>
+              </Grid>
 
-            <div className="box">
+            </Grid>
+          </Box>
+        </Box>
 
-                <fieldset>
-                    <label>نام کاربری</label>
-                    <input type="text" value={input.username} onChange={(e)=>setInput({...input,username:e.target.value})}></input>
-                </fieldset>
-
-                <fieldset>
-                    <label>رمزعبور</label>
-                    <input type="password" value={input.password} onChange={(e)=>setInput({...input,password:e.target.value})}></input>
-                </fieldset>
-
-                <button onClick={submit}>ورود</button>
-                <p className="forget">فراموشی رمز عبور</p>
-
-            </div>
-        </div>
+      </Container>
     )
 }
 

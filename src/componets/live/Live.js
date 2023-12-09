@@ -7,7 +7,6 @@ import { PiWarningDuotone } from "react-icons/pi";
 import { ToastContainer, toast } from "react-toastify";
 
 import { TiMediaPlayReverse } from "react-icons/ti";
-import { Container } from "@mui/material";
 
 const Live = () =>{
     const [device, setDevice] = useState([])

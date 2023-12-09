@@ -7,6 +7,7 @@ import { IoMdAddCircle } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
 import { HiVideoCamera } from "react-icons/hi2";
 import { MdDeleteForever } from "react-icons/md";
+import { PiWebcamFill } from "react-icons/pi";
 import {
   Button,
   Card,
@@ -17,12 +18,18 @@ import {
   Grid,
   IconButton,
   TextField,
+  InputLabel,
+  FormControl,
+  MenuItem,
+  Select,
+
 } from "@mui/material";
 import { CloseRounded } from "@mui/icons-material";
 
 const Connection = () => {
   const [newDevice, setNewDevice] = useState({
     active: false,
+    type:'ip',
     name: "",
     ip: "",
     port: "554",
@@ -33,19 +40,19 @@ const Connection = () => {
   const id = getCookie("id");
 
   const submit = () => {
-    if (newDevice.ip.length < 7) {
+    if (newDevice.ip.length < 7 && newDevice.type =='ip') {
       toast.warning("مقدار ip صحیح وارد کنید", { position: "bottom-right" });
-    } else if (newDevice.port.length == 0) {
+    } else if (newDevice.port.length == 0 && newDevice.type =='ip') {
       toast.warning("مقدار port صحیح وارد کنید", { position: "bottom-right" });
-    } else if (newDevice.port.name == 0) {
+    } else if (newDevice.name == 0 ) {
       toast.warning("مقدار نام دستگاه صحیح وارد کنید", {
         position: "bottom-right",
       });
-    } else if (newDevice.user.length < 3) {
+    } else if (newDevice.user.length < 3 && newDevice.type =='ip') {
       toast.warning("مقدار نام کاربری صحیح وارد کنید", {
         position: "bottom-right",
       });
-    } else if (newDevice.user.password < 3) {
+    } else if (newDevice.password.length < 3 && newDevice.type =='ip') {
       toast.warning("مقدار نام رمزعبور صحیح وارد کنید", {
         position: "bottom-right",
       });
@@ -53,6 +60,7 @@ const Connection = () => {
       axios
         .post(OnRun + "/addconnetion", {
           id: id,
+          type:newDevice.type,
           name: newDevice.name,
           ip: newDevice.ip,
           port: newDevice.port,
@@ -119,7 +127,11 @@ const Connection = () => {
             return (
               <Card className="Device" key={i._id}>
                 <span>
-                  <HiVideoCamera />
+                  {
+                    i.type=='ip'?
+                      <HiVideoCamera />
+                      :<PiWebcamFill />
+                  }
                 </span>
                 <div>
                   <p>نام</p>
@@ -151,6 +163,7 @@ const Connection = () => {
         variant="contained"
         color="success"
         size="large"
+        sx={{marginLeft:5}}
         endIcon={<IoMdAddCircle />}
         onClick={() => {
           setNewDevice({ ...newDevice, active: true });
@@ -163,15 +176,15 @@ const Connection = () => {
         onClose={() => setNewDevice({ ...newDevice, active: false })}
         open={newDevice.active}
       >
-        <DialogTitle textAlign="center">
-          دستگاه جدید
-          <IconButton
-            onClick={() => setNewDevice({ ...newDevice, active: false })}
-            sx={{ right: 20, position: "absolute" }}
-          >
-            <CloseRounded />
-          </IconButton>
-        </DialogTitle>
+      <DialogTitle textAlign="center">
+        دستگاه جدید
+        <IconButton
+          onClick={() => setNewDevice({ ...newDevice, active: false })}
+          sx={{ right: 20, position: "absolute" }}
+        >
+          <CloseRounded />
+        </IconButton>
+      </DialogTitle>
         <DialogContent dividers>
           <Grid container spacing={2}>
             <Grid item xs="12">
@@ -186,50 +199,73 @@ const Connection = () => {
               ></TextField>
             </Grid>
             <Grid item xs="12">
-              <TextField
-                fullWidth
-                size="small"
-                label="ip address"
-                value={newDevice.ip}
-                onChange={(e) => {
-                  setNewDevice({ ...newDevice, ip: e.target.value });
-                }}
-              ></TextField>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">نوع</InputLabel>
+                <Select
+                  size="small"
+                  value={newDevice.type}
+                  label="نوع"
+                  onChange={(e)=>{
+                    setNewDevice({...newDevice,type:e.target.value})
+                  }}
+                >
+                  <MenuItem value={'ip'}>ip</MenuItem>
+                  <MenuItem value={'webcam'}>webcam</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
-            <Grid item xs="12">
-              <TextField
-                fullWidth
-                size="small"
-                label="port"
-                value={newDevice.port}
-                onChange={(e) => {
-                  setNewDevice({ ...newDevice, port: e.target.value });
-                }}
-              ></TextField>
-            </Grid>
-            <Grid item xs="12">
-              <TextField
-                fullWidth
-                size="small"
-                label="نام کاربری"
-                value={newDevice.user}
-                onChange={(e) => {
-                  setNewDevice({ ...newDevice, user: e.target.value });
-                }}
-              ></TextField>
-            </Grid>
-            <Grid item xs="12">
-              <TextField
-                fullWidth
-                size="small"
-                label="رمزعبور"
-                type="password"
-                value={newDevice.password}
-                onChange={(e) => {
-                  setNewDevice({ ...newDevice, password: e.target.value });
-                }}
-              ></TextField>
-            </Grid>
+            {
+              newDevice.type=='ip'?
+              <>
+                <Grid item xs="12">
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="ip address"
+                    value={newDevice.ip}
+                    onChange={(e) => {
+                      setNewDevice({ ...newDevice, ip: e.target.value });
+                    }}
+                    ></TextField>
+                  
+                </Grid>
+                <Grid item xs="12">
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="port"
+                    value={newDevice.port}
+                    onChange={(e) => {
+                      setNewDevice({ ...newDevice, port: e.target.value });
+                    }}
+                    ></TextField>
+                </Grid>
+                <Grid item xs="12">
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="نام کاربری"
+                    value={newDevice.user}
+                    onChange={(e) => {
+                      setNewDevice({ ...newDevice, user: e.target.value });
+                    }}
+                  ></TextField>
+                </Grid>
+                <Grid item xs="12">
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="رمزعبور"
+                    type="password"
+                    value={newDevice.password}
+                    onChange={(e) => {
+                      setNewDevice({ ...newDevice, password: e.target.value });
+                    }}
+                  ></TextField>
+                </Grid>
+              </>
+              :null
+            }
             <DialogActions
               sx={{
                 width: "100%",
