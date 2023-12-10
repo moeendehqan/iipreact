@@ -65,7 +65,7 @@ const Live = () =>{
             <div className="liveBox">
                 <div className="monitor">
                     {imageUrl && (
-                        <img src={`data:image/jpeg;base64,${imageUrl.image}`} alt="تصویر" />
+                        <img src={`data:image/jpeg;base64,${imageUrl.frame.image}`} alt="تصویر" />
                     )}
                     <div className="respo">
 

@@ -96,7 +96,7 @@ const Longin = () =>{
               
             />
             <Button
-              type="submit"
+              onClick={submit}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
