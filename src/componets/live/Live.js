@@ -28,13 +28,13 @@ const Live = () =>{
             axios.post(OnRun + '/concamera', { id: id, _id: selected._id })
             .then(response => {
                 setImageUrl(response.data);
-
             })
             .catch(error => {
               console.error('Error fetching camera stream:', error);
             });
         }
       };
+
 
 
     useEffect(getDevice,[])
@@ -68,6 +68,44 @@ const Live = () =>{
                         <img src={`data:image/jpeg;base64,${imageUrl.frame.image}`} alt="تصویر" />
                     )}
                     <div className="respo">
+
+                        {
+                            imageUrl?
+                                <>
+                                    <div className="date">
+                                        <p>زمان</p>
+                                        <p>{imageUrl.frame.time}</p>
+                                        <p>{imageUrl.frame.date}</p>
+                                    </div>
+                                    <div className="cntplt">
+                                        <p>تعداد پلاک</p>
+                                        <p>{imageUrl.frame.plate.length}</p>
+                                    </div>
+                                    <div className="pltlst">
+                                        {
+                                            imageUrl.frame.plate.length>0?
+                                            imageUrl.frame.plate.map(i=>{
+                                                const id = i.number.substring(0, 2);
+                                                const alpha = i.number.substring(2, 3);
+                                                const serial = i.number.substring(3, 6);
+                                                const city = i.number.substring(6, 8);
+                                                return(
+                                                    <div className="plt">
+                                                        <p>{Math.floor(i.score*100).toLocaleString()}</p>
+                                                        <div className="obj">
+                                                            <p className="id">{id}</p>
+                                                            <p className="alpha">{alpha}</p>
+                                                            <p className="serial">{serial}</p>
+                                                            <p className="cty">{city}</p>
+                                                        </div>
+                                                    </div>
+                                                    )
+                                            })
+                                            :null
+                                        }
+                                    </div>
+                                </>:null
+                        }
 
                     </div>
                 </div>

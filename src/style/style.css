@@ -325,6 +325,56 @@ html, body, #root {
 }
 .liveBox .monitor .respo {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.liveBox .monitor .respo .date {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.liveBox .monitor .respo .date p {
+  font-size: 12pt;
+  color: #291c63;
+}
+.liveBox .monitor .respo .cntplt {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.liveBox .monitor .respo .cntplt p {
+  font-size: 14pt;
+  color: #291c63;
+}
+.liveBox .monitor .respo .pltlst {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.liveBox .monitor .respo .pltlst .plt {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.liveBox .monitor .respo .pltlst .plt > p {
+  font-size: 12pt;
+  color: #291c63;
+}
+.liveBox .monitor .respo .pltlst .plt .obj {
+  display: flex;
+  flex-direction: row-reverse;
+  border: 1px #444444 solid;
+  border-radius: 3px;
+  padding: 3px 6px;
+}
+.liveBox .monitor .respo .pltlst .plt .obj .cty {
+  border-left: 1px #444444 solid;
+}
+.liveBox .monitor .respo .pltlst .plt .obj .alpha {
+  margin: 0px 5px;
 }
 .liveBox .monitor img {
   flex: 1;

@@ -341,6 +341,56 @@ html,body,#root{
         margin: 10px;
         .respo{
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            .date{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                p{
+                    font-size: 12pt;
+                    color: $colorBlue;
+                }
+            }
+            .cntplt{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-around;
+                p{
+                    font-size: 14pt;
+                    color: $colorBlue;
+                }
+            }
+            .pltlst{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                .plt{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    >p{
+                        font-size: 12pt;
+                        color: $colorBlue;
+                    }
+                    .obj{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        border: 1px $colorTosi solid;
+                        border-radius: 3px;
+                        padding: 3px 6px;
+                        .cty{
+                            border-left: 1px $colorTosi solid;
+                        }
+                        .alpha{
+                            margin: 0px 5px;
+                        }
+                    }
+                }
+            }
         }
         img{
             flex: 1;
