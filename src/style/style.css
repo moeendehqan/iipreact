@@ -329,10 +329,7 @@ html, body, #root {
   flex: 1;
 }
 
-.rules {
-  margin: 25px 10px;
-}
-.rules .plate-input {
+.plate-input {
   display: flex;
   flex-direction: row-reverse;
   border: 2px #444444 solid;
@@ -344,7 +341,7 @@ html, body, #root {
   align-items: center;
   overflow: hidden;
 }
-.rules .plate-input input, .rules .plate-input select {
+.plate-input input, .plate-input select {
   border: 0px;
   height: 35px;
   margin: 0px 5px;
@@ -353,22 +350,22 @@ html, body, #root {
   color: #000;
   background: transparent;
 }
-.rules .plate-input input::-webkit-inner-spin-button, .rules .plate-input select::-webkit-inner-spin-button {
+.plate-input input::-webkit-inner-spin-button, .plate-input select::-webkit-inner-spin-button {
   display: none;
 }
-.rules .plate-input input::-webkit-outer-spin-button, .rules .plate-input select::-webkit-outer-spin-button {
+.plate-input input::-webkit-outer-spin-button, .plate-input select::-webkit-outer-spin-button {
   display: none;
 }
-.rules .plate-input input::-moz-placeholder, .rules .plate-input select::-moz-placeholder {
+.plate-input input::-moz-placeholder, .plate-input select::-moz-placeholder {
   color: rgba(68, 68, 68, 0.4);
 }
-.rules .plate-input input::placeholder, .rules .plate-input select::placeholder {
+.plate-input input::placeholder, .plate-input select::placeholder {
   color: rgba(68, 68, 68, 0.4);
 }
-.rules .plate-input input:focus, .rules .plate-input select:focus {
+.plate-input input:focus, .plate-input select:focus {
   outline: 0px;
 }
-.rules .plate-input .blue {
+.plate-input .blue {
   width: 20px;
   background: #12209b;
   display: flex;
@@ -378,35 +375,35 @@ html, body, #root {
   padding: 7px 0px;
   height: 100%;
 }
-.rules .plate-input .blue img {
+.plate-input .blue img {
   width: 80%;
 }
-.rules .plate-input .blue p {
+.plate-input .blue p {
   font-size: 6pt;
   color: #ffffff;
   text-align: right;
 }
-.rules .plate-input .idplate {
+.plate-input .idplate {
   width: 40px;
 }
-.rules .plate-input .alpha {
+.plate-input .alpha {
   width: 45px;
 }
-.rules .plate-input .serial {
+.plate-input .serial {
   width: 60px;
 }
-.rules .plate-input .city {
+.plate-input .city {
   width: 40px;
   margin-top: -5px;
 }
-.rules .plate-input .boxcity {
+.plate-input .boxcity {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border-left: 1px #000 solid;
 }
-.rules .plate-input .boxcity p {
+.plate-input .boxcity p {
   font-size: 7pt;
   color: #000;
   text-align: center;

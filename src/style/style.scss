@@ -362,87 +362,86 @@ html,body,#root{
 }
 
 
-.rules{
-    margin: 25px 10px;
-    .plate-input{
-        display: flex;
-        flex-direction: row-reverse;
-        border: 2px $colorTosi solid;
-        background: $colorFFF;
-        border-radius: 5px;
-        width: 260px;
-        height: 50px;
-        justify-content: space-between;
-        align-items: center;
-        overflow: hidden;
-        input, select{
-            border: 0px;
-            &::-webkit-inner-spin-button{
-                display: none;
-            }
-            &::-webkit-outer-spin-button{
-                display: none;
-            }
-            height: 35px;
-            margin: 0px 5px;
-            font-size: 20pt;
-            text-align: center;
-            color: #000;
-            &::placeholder{
-                color: rgba($colorTosi,0.4);
-            }
-            background: transparent;
-            &:focus{
-                outline: 0px;
-            }
-        }
-        .blue{
-            width: 20px;
-            background: #12209b;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            padding: 7px 0px;
-            height: 100%;
-            img{
-                width: 80%;
-            }
-            p{
-                font-size: 6pt;
-                color: $colorFFF;
-                text-align: right;
-            }
-        }
-        .idplate{
-            width: 40px;
-        }
-        .alpha{
-            width: 45px;
-        }
-        .serial{
-            width: 60px;
-        }
-        .city{
-            width: 40px;
-            margin-top: -5px;
 
 
+.plate-input{
+    display: flex;
+    flex-direction: row-reverse;
+    border: 2px $colorTosi solid;
+    background: $colorFFF;
+    border-radius: 5px;
+    width: 260px;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    input, select{
+        border: 0px;
+        &::-webkit-inner-spin-button{
+            display: none;
         }
-        .boxcity{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            border-left: 1px #000 solid;
-            p{
-                font-size: 7pt;
-                color: #000;
-                text-align: center;
-
-            }
+        &::-webkit-outer-spin-button{
+            display: none;
         }
-        
-    
+        height: 35px;
+        margin: 0px 5px;
+        font-size: 20pt;
+        text-align: center;
+        color: #000;
+        &::placeholder{
+            color: rgba($colorTosi,0.4);
+        }
+        background: transparent;
+        &:focus{
+            outline: 0px;
+        }
     }
+    .blue{
+        width: 20px;
+        background: #12209b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 7px 0px;
+        height: 100%;
+        img{
+            width: 80%;
+        }
+        p{
+            font-size: 6pt;
+            color: $colorFFF;
+            text-align: right;
+        }
+    }
+    .idplate{
+        width: 40px;
+    }
+    .alpha{
+        width: 45px;
+    }
+    .serial{
+        width: 60px;
+    }
+    .city{
+        width: 40px;
+        margin-top: -5px;
+
+
+    }
+    .boxcity{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border-left: 1px #000 solid;
+        p{
+            font-size: 7pt;
+            color: #000;
+            text-align: center;
+
+        }
+    }
+    
+
 }

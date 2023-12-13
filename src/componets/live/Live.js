@@ -85,10 +85,10 @@ const Live = () =>{
                                         {
                                             imageUrl.frame.plate.length>0?
                                             imageUrl.frame.plate.map(i=>{
-                                                const id = i.number.substring(0, 2);
-                                                const alpha = i.number.substring(2, 3);
-                                                const serial = i.number.substring(3, 6);
-                                                const city = i.number.substring(6, 8);
+                                                const id = i.number.idplate;
+                                                const alpha = i.number.alpha;
+                                                const serial = i.number.serial;
+                                                const city = i.number.city;
                                                 return(
                                                     <div className="plt">
                                                         <p>{Math.floor(i.score*100).toLocaleString()}</p>
