@@ -4,7 +4,7 @@ import Desk from "./page/desk";
 import Users from "./componets/users/users";
 import Connection from "./componets/connection/connection";
 import Live from "./componets/live/Live";
-
+import Rulse from "./componets/rules/rules";
 import "./style/style.css";
 import "react-toastify/dist/ReactToastify.css";
 import "@fontsource/roboto/300.css";
@@ -12,7 +12,6 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import 'stylis-plugin-rtl/dist/stylis-rtl';
-
 import { createTheme } from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
@@ -43,6 +42,7 @@ function App() {
             <Route path="users" element={<Users />}></Route>
             <Route path="connection" element={<Connection />}></Route>
             <Route path="live" element={<Live />}></Route>
+            <Route path="rules" element={<Rulse />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

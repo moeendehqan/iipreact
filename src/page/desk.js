@@ -24,6 +24,7 @@ import PeopleIcon from '@mui/icons-material/People';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import RuleIcon from '@mui/icons-material/Rule';
 
 const Desk = () =>{
     const [open, setOpen] = React.useState(true);
@@ -158,11 +159,11 @@ return(
                 </ListItemIcon>
                 <ListItemText primary="اتصالات" />
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton onClick={()=>navigate('rules')}>
                 <ListItemIcon>
-                    <AssessmentIcon />
+                    <RuleIcon />
                 </ListItemIcon>
-                <ListItemText primary="گزارشات" />
+                <ListItemText primary="قوانین" />
                 </ListItemButton>
                 <ListItemButton onClick={()=>navigate('live')}>
                 <ListItemIcon>

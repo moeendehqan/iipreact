@@ -159,61 +159,6 @@ html, body, #root {
   justify-content: center;
 }
 
-.popup {
-  position: absolute;
-  inset: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.popup .clsclc {
-  position: absolute;
-  inset: 0px;
-}
-.popup .win {
-  width: 450px;
-  background: #fefdfd;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 15px;
-  border: 1px #444444 solid;
-  padding: 10px 0px;
-}
-.popup .win fieldset {
-  width: 80%;
-  border: 0px;
-  margin: 10px 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.popup .win fieldset input {
-  border-radius: 10px;
-  border: 1px #444444 solid;
-  height: 30px;
-  width: 220px;
-  text-align: center;
-}
-.popup .win fieldset input:focus {
-  outline: 1px #444444 solid;
-}
-.popup .win fieldset label {
-  color: #444444;
-}
-.popup .win button {
-  width: 220px;
-  background: #291c63;
-  color: #ffffff;
-  height: 30px;
-  border: 0px;
-  border-radius: 10px;
-  margin: 10px 0px;
-}
-
 .listDevice {
   display: flex;
   flex-direction: column;
@@ -382,4 +327,87 @@ html, body, #root {
 }
 .liveBox .detile {
   flex: 1;
+}
+
+.rules {
+  margin: 25px 10px;
+}
+.rules .plate-input {
+  display: flex;
+  flex-direction: row-reverse;
+  border: 2px #444444 solid;
+  background: #ffffff;
+  border-radius: 5px;
+  width: 260px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+.rules .plate-input input, .rules .plate-input select {
+  border: 0px;
+  height: 35px;
+  margin: 0px 5px;
+  font-size: 20pt;
+  text-align: center;
+  color: #000;
+  background: transparent;
+}
+.rules .plate-input input::-webkit-inner-spin-button, .rules .plate-input select::-webkit-inner-spin-button {
+  display: none;
+}
+.rules .plate-input input::-webkit-outer-spin-button, .rules .plate-input select::-webkit-outer-spin-button {
+  display: none;
+}
+.rules .plate-input input::-moz-placeholder, .rules .plate-input select::-moz-placeholder {
+  color: rgba(68, 68, 68, 0.4);
+}
+.rules .plate-input input::placeholder, .rules .plate-input select::placeholder {
+  color: rgba(68, 68, 68, 0.4);
+}
+.rules .plate-input input:focus, .rules .plate-input select:focus {
+  outline: 0px;
+}
+.rules .plate-input .blue {
+  width: 20px;
+  background: #12209b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 7px 0px;
+  height: 100%;
+}
+.rules .plate-input .blue img {
+  width: 80%;
+}
+.rules .plate-input .blue p {
+  font-size: 6pt;
+  color: #ffffff;
+  text-align: right;
+}
+.rules .plate-input .idplate {
+  width: 40px;
+}
+.rules .plate-input .alpha {
+  width: 45px;
+}
+.rules .plate-input .serial {
+  width: 60px;
+}
+.rules .plate-input .city {
+  width: 40px;
+  margin-top: -5px;
+}
+.rules .plate-input .boxcity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-left: 1px #000 solid;
+}
+.rules .plate-input .boxcity p {
+  font-size: 7pt;
+  color: #000;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
