@@ -153,7 +153,6 @@ const Connection = () => {
               columns={columns} 
               getRowId={(row) => row._id}
               sx={{width:'100%'}} 
-              slots={{ noRowsOverlay: CustomNoRowsOverlay }}
             />
         </div>
       )}

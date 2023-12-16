@@ -1,1 +1,1 @@
-export const OnRun = 'http://127.0.0.1:8080'
+export const OnRun = 'http://vsc.server:8080'
