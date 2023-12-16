@@ -3,14 +3,10 @@ import axios from "axios";
 import { OnRun } from "../../config/OnRun";
 import { useEffect, useState } from "react";
 import { PiWarningDuotone } from "react-icons/pi";
-import { IoMdAddCircle } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
-import { HiVideoCamera } from "react-icons/hi2";
-import { MdDeleteForever } from "react-icons/md";
-import { PiWebcamFill } from "react-icons/pi";
+
 import {
   Button,
-  Card,
   Dialog,
   DialogActions,
   DialogContent,
@@ -22,14 +18,20 @@ import {
   FormControl,
   MenuItem,
   Select,
-
 } from "@mui/material";
+import SpeedDial from '@mui/material/SpeedDial';
 import { CloseRounded } from "@mui/icons-material";
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import { DataGrid , GridActionsCellItem } from '@mui/x-data-grid';
 
 const Connection = () => {
   const [newDevice, setNewDevice] = useState({
     active: false,
-    type:'ip',
+    type: "ip",
     name: "",
     ip: "",
     port: "554",
@@ -40,19 +42,19 @@ const Connection = () => {
   const id = getCookie("id");
 
   const submit = () => {
-    if (newDevice.ip.length < 7 && newDevice.type =='ip') {
+    if (newDevice.ip.length < 7 && newDevice.type == "ip") {
       toast.warning("مقدار ip صحیح وارد کنید", { position: "bottom-right" });
-    } else if (newDevice.port.length == 0 && newDevice.type =='ip') {
+    } else if (newDevice.port.length == 0 && newDevice.type == "ip") {
       toast.warning("مقدار port صحیح وارد کنید", { position: "bottom-right" });
-    } else if (newDevice.name == 0 ) {
+    } else if (newDevice.name == 0) {
       toast.warning("مقدار نام دستگاه صحیح وارد کنید", {
         position: "bottom-right",
       });
-    } else if (newDevice.user.length < 3 && newDevice.type =='ip') {
+    } else if (newDevice.user.length < 3 && newDevice.type == "ip") {
       toast.warning("مقدار نام کاربری صحیح وارد کنید", {
         position: "bottom-right",
       });
-    } else if (newDevice.password.length < 3 && newDevice.type =='ip') {
+    } else if (newDevice.password.length < 3 && newDevice.type == "ip") {
       toast.warning("مقدار نام رمزعبور صحیح وارد کنید", {
         position: "bottom-right",
       });
@@ -60,7 +62,7 @@ const Connection = () => {
       axios
         .post(OnRun + "/addconnetion", {
           id: id,
-          type:newDevice.type,
+          type: newDevice.type,
           name: newDevice.name,
           ip: newDevice.ip,
           port: newDevice.port,
@@ -96,6 +98,24 @@ const Connection = () => {
     });
   };
 
+  const columns = [
+    {field:'name', headerName:'نام', flex:2, editable: true},
+    {field:'ip', headerName:'ip', flex:2, editable: true}, 
+    {field:'datetime', headerName:'تاریخ ایجاد', flex:2, editable: true},
+    {field:'port', headerName:'پورت', flex:1, editable: true},
+    {field:'type', headerName:'نوع', flex:1, editable: true},
+    {field:'username', headerName:'نام کاربری', flex:2, editable: true},
+    {field:'_id', headerName:'_id', flex:4},
+    {
+      field: 'actions',
+      type: 'actions',
+      width: 100,
+      getActions: (params) => [
+        <GridActionsCellItem icon={<DeleteIcon />} label="Delete" onClick={()=>del(params.id)}/>,
+      ],
+    },
+  ]
+
   const del = (_id) => {
     axios
       .post(OnRun + "/delconnection", { id: id, _id: _id })
@@ -114,77 +134,43 @@ const Connection = () => {
   return (
     <div className="panle">
       <ToastContainer autoClose={3000} />
-      {device.length == 0 ? (
+
+      {device.length == 0 ? 
+        <>
+
+
         <div className="NoDivce">
           <span>
             <PiWarningDuotone />
           </span>
           <p>هیچ دستگاهی یافت نشد</p>
         </div>
-      ) : (
+        </>
+      : (
         <div className="listDevice">
-          {device.map((i) => {
-            return (
-              <Card className="Device" key={i._id}>
-                <span>
-                  {
-                    i.type=='ip'?
-                      <HiVideoCamera />
-                      :<PiWebcamFill />
-                  }
-                </span>
-                <div>
-                  <p>نام</p>
-                  <p>{i.name}</p>
-                </div>
-                <div>
-                  <p>ip</p>
-                  <p>{i.ip}</p>
-                </div>
-                <div>
-                  <p>port</p>
-                  <p>{i.port}</p>
-                </div>
-                <div>
-                  <p>تاریخ</p>
-                  <p>{i.datetime}</p>
-                </div>
-                <div className="action">
-                  <span onClick={() => del(i._id)}>
-                    <MdDeleteForever />
-                  </span>
-                </div>
-              </Card>
-            );
-          })}
+            <DataGrid 
+              rows={device} 
+              columns={columns} 
+              getRowId={(row) => row._id}
+              sx={{width:'100%'}} 
+              slots={{ noRowsOverlay: CustomNoRowsOverlay }}
+            />
         </div>
       )}
-      <Button
-        variant="contained"
-        color="success"
-        size="large"
-        sx={{marginLeft:5}}
-        endIcon={<IoMdAddCircle />}
-        onClick={() => {
-          setNewDevice({ ...newDevice, active: true });
-        }}
-      >
-        افزودن دستگاه جدید
-      </Button>
       <Dialog
         maxWidth="xs"
         onClose={() => setNewDevice({ ...newDevice, active: false })}
         open={newDevice.active}
       >
-      <DialogTitle textAlign="center">
-        دستگاه جدید
-        <IconButton
-          onClick={() => setNewDevice({ ...newDevice, active: false })}
-          sx={{ right: 20, position: "absolute" }}
-        >
-          <CloseRounded />
-        </IconButton>
-      </DialogTitle>
+        <DialogTitle textAlign="center">
+          دستگاه جدید
+          <IconButton
+            onClick={() => setNewDevice({ ...newDevice, active: false })}
+            sx={{ right: 20, position: "absolute" }}
+          >
+            <CloseRounded />
+          </IconButton>
+        </DialogTitle>
         <DialogContent dividers>
           <Grid container spacing={2}>
             <Grid item xs="12">
@@ -205,17 +191,16 @@ const Connection = () => {
                   size="small"
                   value={newDevice.type}
                   label="نوع"
-                  onChange={(e)=>{
-                    setNewDevice({...newDevice,type:e.target.value})
+                  onChange={(e) => {
+                    setNewDevice({ ...newDevice, type: e.target.value });
                   }}
                 >
-                  <MenuItem value={'ip'}>ip</MenuItem>
-                  <MenuItem value={'webcam'}>webcam</MenuItem>
+                  <MenuItem value={"ip"}>ip</MenuItem>
+                  <MenuItem value={"webcam"}>webcam</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            {
-              newDevice.type=='ip'?
+            {newDevice.type == "ip" ? (
               <>
                 <Grid item xs="12">
                   <TextField
@@ -226,8 +211,7 @@ const Connection = () => {
                     onChange={(e) => {
                       setNewDevice({ ...newDevice, ip: e.target.value });
                     }}
-                    ></TextField>
-                  
+                  ></TextField>
                 </Grid>
                 <Grid item xs="12">
                   <TextField
@@ -238,7 +222,7 @@ const Connection = () => {
                     onChange={(e) => {
                       setNewDevice({ ...newDevice, port: e.target.value });
                     }}
-                    ></TextField>
+                  ></TextField>
                 </Grid>
                 <Grid item xs="12">
                   <TextField
@@ -264,8 +248,7 @@ const Connection = () => {
                   ></TextField>
                 </Grid>
               </>
-              :null
-            }
+            ) : null}
             <DialogActions
               sx={{
                 width: "100%",
@@ -283,6 +266,20 @@ const Connection = () => {
           </Grid>
         </DialogContent>
       </Dialog>
+      <SpeedDial
+        ariaLabel="SpeedDial basic example" 
+        sx={{ position: "absolute", bottom: 16, right: 16 }} 
+        icon={<SpeedDialIcon />} 
+      >
+          <SpeedDialAction
+            key={'addconnect'}
+            icon={<VideocamIcon />}
+            tooltipTitle={'دستگاه جدید'} 
+            onClick={() => {
+              setNewDevice({ ...newDevice, active: true });
+            }}
+          />
+      </SpeedDial>
     </div>
   );
 };

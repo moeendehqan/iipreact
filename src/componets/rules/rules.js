@@ -19,6 +19,11 @@ import { getCookie } from "../cookie/cookie";
 import { ToastContainer, toast } from "react-toastify";
 import CardPlateRules from "../crads/PlateRule";
 
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import RuleIcon from '@mui/icons-material/Rule';
+
 const Rulse = () => {
   const id = getCookie("id");
 
@@ -113,18 +118,6 @@ const Rulse = () => {
   return (
     <div className="rules">
       <ToastContainer autoClose={3000} />
-      <Button
-        variant="contained"
-        color="success"
-        size="large"
-        sx={{ marginLeft: 5 }}
-        endIcon={<AddBoxIcon />}
-        onClick={() => {
-          setAddMode(true);
-        }}
-      >
-        افزودن قانون جدید
-      </Button>
       <Grid container spacing={2} >
         {
           rowData.length==0?null:
@@ -226,6 +219,20 @@ const Rulse = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      <SpeedDial
+        ariaLabel="SpeedDial basic example" 
+        sx={{ position: "absolute", bottom: 16, right: 16 }} 
+        icon={<SpeedDialIcon />} 
+      >
+          <SpeedDialAction
+            key={'addrules'}
+            icon={<RuleIcon />}
+            tooltipTitle={'قانون جدید'} 
+            onClick={() => {
+              setAddMode(true);
+            }}
+          />
+      </SpeedDial>
     </div>
   );
 };
