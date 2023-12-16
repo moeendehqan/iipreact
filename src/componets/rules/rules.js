@@ -17,6 +17,7 @@ import axios from "axios";
 import { OnRun } from "../../config/OnRun";
 import { getCookie } from "../cookie/cookie";
 import { ToastContainer, toast } from "react-toastify";
+import CardPlateRules from "../crads/PlateRule";
 
 const Rulse = () => {
   const id = getCookie("id");
@@ -60,6 +61,8 @@ const Rulse = () => {
     "S",
   ]);
   const [status, setStatus] = useState(true);
+  const [rowData, setRowData] = useState([]);
+
 
   const handleIdplate = (e) => {
     if (e.length <= 2) {
@@ -90,6 +93,7 @@ const Rulse = () => {
       .then((response) => {
         if (response.data.reply) {
           toast.success("افزوده شد", { position: "bottom-right" });
+          setAddMode(false);
         } else {
           toast.warning(response.data.msg, { position: "bottom-right" });
         }
@@ -98,7 +102,9 @@ const Rulse = () => {
 
   const get = () => {
     axios.post(OnRun + "/getrules", { id: id }).then((response) => {
-      console.log(response.data);
+      if (response.data.reply) {
+        setRowData(response.data.df);
+      }
     });
   };
 
@@ -119,6 +125,18 @@ const Rulse = () => {
       >
         افزودن قانون جدید
       </Button>
+      <Grid container spacing={2} >
+        {
+          rowData.length==0?null:
+          rowData.map(i=>{
+            return(
+              <Grid item>
+                <CardPlateRules idCreator={id} _id={i._id}  id={i.idplate} alpha={i.alpha} serial={i.serial} city={i.city} status={i.status} datetime={i.datetime}/>
+              </Grid>
+            )
+          })
+        }
+      </Grid>
       <Dialog maxWidth="xs" open={addmode} onClose={() => setAddMode(false)}>
         <DialogTitle textAlign="center">
           قانون جدید

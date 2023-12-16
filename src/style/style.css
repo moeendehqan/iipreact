@@ -407,4 +407,55 @@ html, body, #root {
   font-size: 7pt;
   color: #000;
   text-align: center;
+}
+
+.plate-lincese {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 220px;
+  margin: 10px;
+  border: 2px #444444 solid;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 50px;
+}
+.plate-lincese .blu {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  background: #291c63;
+  align-items: center;
+  height: 50px;
+  justify-content: space-around;
+}
+.plate-lincese .blu img {
+  width: 70%;
+  margin-top: 3px;
+}
+.plate-lincese .blu p {
+  color: #ffffff;
+}
+.plate-lincese > p {
+  font-size: 20pt;
+}
+.plate-lincese .city {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px #444444 solid;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 5px;
+}
+.plate-lincese .city .ir {
+  font-size: 8pt;
+}
+.plate-lincese .city .num {
+  font-size: 20pt;
+  margin-top: -10px;
+}
+
+.rules {
+  margin: 20px;
 }/*# sourceMappingURL=style.css.map */

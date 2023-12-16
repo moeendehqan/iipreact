@@ -445,3 +445,58 @@ html,body,#root{
     
 
 }
+
+
+
+.plate-lincese{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 220px;
+    margin: 10px;
+    border: 2px $colorTosi solid;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 50px;
+    .blu{
+        display: flex;
+        flex-direction: column;
+        width: 25px;
+        background: $colorBlue;
+        align-items: center;
+        height: 50px;
+        justify-content: space-around;
+
+        img{
+            width: 70%;
+            margin-top: 3px;
+        }
+        p{
+            color: $colorFFF;
+        }
+    }
+    >p{
+        font-size: 20pt;
+    }
+    .city{
+        display: flex;
+        flex-direction: column;
+        border-left: 1px $colorTosi solid;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 5px;
+        .ir{
+            font-size: 8pt;
+        }
+        .num{
+            font-size: 20pt;
+            margin-top: -10px;
+        }
+    }
+}
+
+
+.rules{
+    margin: 20px;
+}
