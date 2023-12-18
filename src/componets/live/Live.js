@@ -40,6 +40,12 @@ const Live = () =>{
     useEffect(getDevice,[])
     useEffect(connect_camera,[selected,imageUrl])
 
+    useEffect(() => {
+        const intervalId = setInterval(connect_camera, 1000);
+        return () => clearInterval(intervalId);
+      }, [ selected, imageUrl]);
+
+
     return(
         <div className="live">
             <ToastContainer autoClose={3000} />
