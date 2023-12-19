@@ -38,7 +38,6 @@ const Live = () =>{
 
 
     useEffect(getDevice,[])
-    useEffect(connect_camera,[selected,imageUrl])
 
     useEffect(() => {
         const intervalId = setInterval(connect_camera, 1000);
@@ -85,11 +84,11 @@ const Live = () =>{
                                     </div>
                                     <div className="cntplt">
                                         <p>تعداد پلاک</p>
-                                        <p>{imageUrl.frame.plate.length}</p>
+                                        <p>{imageUrl.frame.plate}</p>
                                     </div>
                                     <div className="pltlst">
                                         {
-                                            imageUrl.frame.plate.length>0?
+                                            imageUrl.frame.plate?
                                             imageUrl.frame.plate.map(i=>{
                                                 const id = i.number.idplate;
                                                 const alpha = i.number.alpha;
