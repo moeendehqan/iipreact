@@ -11,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Button} from '@mui/material'
 import axios from "axios";
 import { OnRun } from "../../config/OnRun";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 const CardPlateRules = (props) => {
 
   const del = () =>{
@@ -27,15 +28,22 @@ const CardPlateRules = (props) => {
     <Card sx={{ maxWidth: 245, margin: 1 }}>
       <CardActionArea>
         <CardMedia height="140">
-          <Platelincese
-            id={props.id}
-            alpha={props.alpha}
-            serial={props.serial}
-            city={props.city}
-          />
+          {
+            props.type=='plate'?
+            <Platelincese
+              id={props.id}
+              alpha={props.alpha}
+              serial={props.serial}
+              city={props.city}
+            />
+            :
+            <Typography gutterBottom variant="h6" component="div">
+              تشخیص اشیا
+            </Typography>
+          }
         </CardMedia>
         <CardContent>
-          {props.status ? <MeetingRoomIcon /> : <NoMeetingRoomIcon />}
+          {props.type =='Object'? <RemoveRedEyeIcon />: props.status? <MeetingRoomIcon /> : <NoMeetingRoomIcon />}
           <Typography gutterBottom variant="h6" component="div">
             {props.datetime}
           </Typography>
