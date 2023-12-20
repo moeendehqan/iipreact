@@ -40,7 +40,7 @@ const Live = () =>{
     useEffect(getDevice,[])
 
     useEffect(() => {
-        const intervalId = setInterval(connect_camera, 1000);
+        const intervalId = setInterval(connect_camera, 1);
         return () => clearInterval(intervalId);
       }, [ selected, imageUrl]);
 
